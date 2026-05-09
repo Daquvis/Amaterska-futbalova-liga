@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Amateur League | Admin Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>⚽ ELITE AMATEUR LEAGUE</h1>
+            <button onclick="toggleAdmin()" id="admin-login-btn">Admin Access</button>
+        </div>
+    </header>
+    
+    <main class="main-layout">
+        <!-- LEFT: Standings & Scorers -->
+        <aside class="column">
+            <section class="card">
+                <h2>League Table</h2>
+                <table id="league-table">
+                    <thead><tr><th>#</th><th>Team</th><th>GD</th><th>Pts</th></tr></thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </section>
+
+            <section class="card">
+                <h2>Top Goalscorers</h2>
+                <table id="scorer-table">
+                    <thead><tr><th>Player</th><th>Goals</th></tr></thead>
+                    <tbody id="scorer-body"></tbody>
+                </table>
+            </section>
+        </aside>
+
+        <!-- CENTER: Results & POTM -->
+        <section class="column center">
+            <h2>Recent Results</h2>
+            <div id="match-history"></div>
+        </section>
+
+        <!-- RIGHT: Match Reports -->
+        <aside class="column">
+            <h2>Latest News</h2>
+            <div id="news-feed"></div>
+        </aside>
+    </main>
+
+    <!-- HIDDEN ADMIN PANEL -->
+    <div id="admin-container" class="modal" style="display: none;">
+        <div class="admin-panel">
+            <div class="admin-header">
+                <h3>Post Match Center</h3>
+                <button onclick="closeAdmin()" class="close-btn">×</button>
+            </div>
+            
+            <div class="admin-grid">
+                <div class="team-input">
+                    <label>Home Team</label>
+                    <input type="text" id="home-team" placeholder="e.g. Real Madrid">
+                    <input type="number" id="home-score" placeholder="Goals">
+                    <input type="text" id="home-scorers" placeholder="Scorers (Mbappe, Mbappe)">
+                </div>
+                
+                <div class="vs-divider">VS</div>
+                
+                <div class="team-input">
+                    <label>Away Team</label>
+                    <input type="text" id="away-team" placeholder="e.g. Bayern Munich">
+                    <input type="number" id="away-score" placeholder="Goals">
+                    <input type="text" id="away-scorers" placeholder="Scorers (Kane)">
+                </div>
+            </div>
+
+            <div class="report-inputs">
+                <input type="text" id="potm-name" placeholder="⭐ Player of the Match">
+                <textarea id="match-news" placeholder="Write a short match summary..."></textarea>
+                <div class="admin-actions">
+                    <button onclick="addMatch()" class="btn-save">Publish Result</button>
+                    <button onclick="clearData()" class="btn-reset">Wipe Season Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
